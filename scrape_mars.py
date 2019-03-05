@@ -26,6 +26,7 @@ def scrape():
 ##Visit the NASA news url and scrape
     url = 'https://mars.nasa.gov/news/?page=0&per_page=40&order=publish_date+desc%2Ccreated_at+desc&search=&category=19%2C165%2C184%2C204&blank_scope=Latest'
     browser.visit(url)
+    time.sleep(1)
     html = browser.html
     soup = bs(html, 'html.parser')
 
@@ -43,7 +44,7 @@ def scrape():
 #JPL Mars url
     url = "https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars"
     browser.visit(url)
-
+    time.sleep(1)
     html = browser.html
     soup = bs(html, 'html.parser')
 
@@ -56,26 +57,28 @@ def scrape():
 
 #Mars Weather
 #Scraping latest Mars weather from their Twitter
-    executable_path = {"executable_path": "chromedriver"}
-    browser= Browser("chrome", **executable_path, headless=False)
+    # executable_path = {"executable_path": "chromedriver"}
+    # browser= Browser("chrome", **executable_path, headless=False)
 
     url = 'https://twitter.com/marswxreport?lang=en'
     browser.visit(url)
+    time.sleep(1)
     html = browser.html
     weather_soup = bs(html, 'html.parser')
-    mars_weather = soup.find('div', class_='js-tweet-text-container').text
+    mars_weather = weather_soup.find('div', class_='js-tweet-text-container').find("p",class_="tweet-text").get_text()
     mars_data['mars_weather'] = mars_weather
 
 #In case they tweeted something complicated, can scrape recent tweet
-    html = browser.html
-    weather_soup = bs(html, 'html.parser')
-    mars_recent_tweet=mars_weather.find("p",class_="tweet-text").get_text()
-    mars_data["mars_recent_tweet"] = mars_recent_tweet
+    # html = browser.html
+    # weather_soup = bs(html, 'html.parser')
+    # mars_recent_tweet=mars_weather.find("p",class_="tweet-text").get_text()
+    # mars_data["mars_recent_tweet"] = mars_recent_tweet
 
 #Mars Facts
 #Visit the facts url and scrape data. Put into panda.
     url = 'https://space-facts.com/mars/'
     browser.visit(url)
+    time.sleep(1)
     tables = pd.read_html(url)
     
     df_mars = tables[0]
