@@ -1,5 +1,5 @@
 # Send_Elon_to_Mars
-This is a webscraping web app for displaying the collected information in a webpage. We are **not** sending Dr. Elon Musk to Mars, but hey he might want to check out the weather before parking his car there next time.
+This is a webscraping web app for displaying the collected information in a webpage. We are **not** sending Dr. Elon Musk to Mars, but hey he might want to check out the weather before parking his car there next time. This is a basic version of a web application that scrapes various websites for data related to the Mission to Mars and displays the information in a single HTML page.
 
 # Dependencies 
 Splinter
@@ -9,11 +9,7 @@ Pandas
 Bootstrap
 time
 
-# Mission to Mars
-
-This is a basic version of a web application that scrapes various websites for data related to the Mission to Mars and displays the information in a single HTML page.
-
-## Scraping
+# Mission to Mars Scraping
 
 Initial scraping used Python, Jupyter Notebook, BeautifulSoup, Pandas, and Requests/Splinter. 
 Used Splinter to navigate the sites when needed and BeautifulSoup to help find and parse out the necessary data.
